@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+</head>
+
+<body>
+
+    <div class="card">
+
+        {% if qr_filename %}
+
+            <h1>Scan Your QR Code</h1>
+
+            <p>
+                This QR code belongs only to <strong>{{ username }}</strong>.
+                Scan it with Google Authenticator (or any TOTP app) &mdash;
+                it generates a separate 6-digit code from every other
+                user's app.
+            </p>
+
+            <img src="{{ url_for('static', filename='qrcodes/' + qr_filename) }}" width="220">
+
+            <br><br>
+
+            <a href="{{ url_for('enroll_face_route') }}">
+                <button>Continue to Face Enrollment</button>
+            </a>
+
+        {% else %}
+
+            <h1>Register</h1>
+
+            <p>Pick a username. You'll get your own QR code and enroll your own face next.</p>
+
+            {% if error %}
+                <p style="color: #b3261e;"><strong>{{ error }}</strong></p>
+            {% endif %}
+
+            <form method="POST" action="/register">
+                <input type="text" name="username" placeholder="Choose a username" required>
+                <button type="submit">Register</button>
+            </form>
+
+        {% endif %}
+
+        <p><a href="/">Back to home</a></p>
+
+    </div>
+
+</body>
+
+</html>

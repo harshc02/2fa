@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>{{ icon|safe }} {{ title }}</h1>
+
+        <p>{{ message }}</p>
+
+        <a href="{{ link_href }}">
+            <button>{{ link_text }}</button>
+        </a>
+
+    </div>
+
+</body>
+
+</html>

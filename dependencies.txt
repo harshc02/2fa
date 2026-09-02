@@ -1,0 +1,5 @@
+Flask
+pyotp
+qrcode[pil]
+opencv-contrib-python<5
+numpy
